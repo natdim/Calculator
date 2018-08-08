@@ -4,18 +4,19 @@ let secondValue = '';
 
 function toInput(n) {
     if (operandValue) {
-        if(!secondValue.includes('.')){
-            secondValue += n;
+        if(secondValue.includes('.') && n === '.') {
+            return;
         }
-        write(secondValue)
+        secondValue += n;
+        write(secondValue);
     } else {
-        if (!firstValue.includes(.)){
-            firstValue += n;
+        if (firstValue.includes('.') && n === '.') {
+            return;
         }
-        write(firstValue);
+            firstValue += n;
+            write(firstValue);
+        }
     }
-
-}
 
 function write(n) {
     document.getElementById('display').value = n;
