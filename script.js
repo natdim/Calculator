@@ -3,12 +3,15 @@ let operandValue = '';
 let secondValue = '';
 
 function toInput(n) {
-    console.log(`Works!' ${n}`);
     if (operandValue) {
-        secondValue += n;
+        if(!secondValue.includes('.')){
+            secondValue += n;
+        }
         write(secondValue)
     } else {
-        firstValue += n;
+        if (!firstValue.includes(.)){
+            firstValue += n;
+        }
         write(firstValue);
     }
 
@@ -29,23 +32,20 @@ function getResult() {
 
     if(operandValue === '+') {
         result = +firstValue + +secondValue;
-    }
-    if(operandValue === '-') {
+    } else if(operandValue === '-') {
         result = +firstValue - +secondValue;
-    }
-     if(operandValue === '*'){
+    } else if(operandValue === '*'){
         result = +firstValue * +secondValue;
-     }
-     if(operandValue === '/'){
+     } else if(operandValue === '/'){
         result = +firstValue / +secondValue;
 
      }
-    write(result);
     setInitialValue(result);
 }
 
-function setInitialValue(firstValueByDefault = ''){
-    firstValue = firstValueByDefault;
+function setInitialValue(value){
+    firstValue = value;
     operandValue = '';
     secondValue = '';
+    write(value);
 }
